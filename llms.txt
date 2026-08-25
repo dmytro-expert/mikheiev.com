@@ -1,0 +1,49 @@
+# Dima Mikheiev
+
+> Dima Mikheiev is an AI Systems Architect who builds AI agents, automation systems, marketing workflows, and AI video production systems for business teams.
+
+## Site
+
+- [Home](https://mikheiev.com/): overview of Dima Mikheiev, services, selected work, proof points, FAQ, and contact links.
+
+## Primary Positioning
+
+Dima helps teams find where AI can improve business operations, then builds systems that make those improvements work in practice.
+
+## Services
+
+- AI Systems & Agents: AI agents connected to company data, APIs, and business tools.
+- Marketing Automation: AI systems for content creation, campaign management, product data workflows, and repeat-task automation.
+- AI Video & Content: workflows using AI image, video, voice, avatars, automation, and human review.
+- AI Lead Generation: agents that find leads, qualify them against an ideal customer profile, write personal outreach, and save records in a CRM.
+
+## Proof Points
+
+- 15+ years in technology.
+- $600K+ earned on Upwork.
+- 200+ completed projects.
+- 100% Job Success Score.
+- Upwork Top Rated Plus.
+- YouTube Shorts channel reached 1,000+ subscribers with $0 spent on ads.
+
+## Selected Work
+
+- AI System for a U.S. Wellness Brand: connected product data, brand rules, content generation, Monday.com, Notion, and Google Drive to create branded images, posters, and infographics.
+- AI Video Production Systems: connected image generation, video models, AI voices, avatars, automation, and human review into repeatable production workflows.
+- YouTube Shorts Automation: production workflow for creating and publishing short-form video content at scale using AI image, video, and voice models. The channel reached 1,000+ subscribers with $0 spent on ads.
+- AI Lead Generation Agent: automated lead research, qualification, personalized outreach, and CRM saving.
+
+## Calls to Action
+
+- [Book Free 30-min Call](https://calendly.com/dima-mikheiev)
+- [Hire Me on Upwork](https://www.upwork.com/freelancers/dmytromikheiev?mp_source=website)
+
+## Footer Contact
+
+- [Email: dima@mikheiev.com](mailto:dima@mikheiev.com)
+- [Connect on LinkedIn](https://www.linkedin.com/in/mikheev-dmitry)
+
+## Images
+
+- Hero portrait: https://pub-175dc125eac043698a7b8f22abca3acb.r2.dev/website/hero1_2.webp
+- About photo: https://pub-175dc125eac043698a7b8f22abca3acb.r2.dev/website/medium-shot.webp
