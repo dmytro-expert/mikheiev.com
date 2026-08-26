@@ -1,6 +1,6 @@
 # Dima Mikheiev
 
-> Dima Mikheiev is an AI Systems Architect who builds AI agents, automation systems, marketing workflows, and AI video production systems for business teams.
+> Dima Mikheiev is an AI Systems Architect and Fractional Head of AI who helps companies decide where AI can create real business value, then leads and builds systems that make it work in practice.
 
 ## Site
 
@@ -8,14 +8,13 @@
 
 ## Primary Positioning
 
-Dima helps teams find where AI can improve business operations, then builds systems that make those improvements work in practice.
+Dima helps companies choose the right AI direction, design architecture, build systems, and make sure those systems are useful to the team.
 
 ## Services
 
-- AI Systems & Agents: AI agents connected to company data, APIs, and business tools.
-- Marketing Automation: AI systems for content creation, campaign management, product data workflows, and repeat-task automation.
-- AI Video & Content: workflows using AI image, video, voice, avatars, automation, and human review.
-- AI Lead Generation: agents that find leads, qualify them against an ideal customer profile, write personal outreach, and save records in a CRM.
+- Fractional Head of AI: senior AI direction, project prioritization, system connection strategy, and team adoption guidance.
+- Marketing Automation: AI systems for content creation, campaign management, product data workflows, and repetitive-task automation.
+- AI Video & Content: systems using AI image, video, voice, and avatars to create content at scale.
 
 ## Proof Points
 
@@ -35,7 +34,7 @@ Dima helps teams find where AI can improve business operations, then builds syst
 
 ## Calls to Action
 
-- [Book Free 30-min Call](https://calendly.com/dima-mikheiev/30-min-intro-call-with-dima)
+- [Book Free 30-min Call](https://calendly.com/dima-mikheiev)
 - [Hire Me on Upwork](https://www.upwork.com/freelancers/dmytromikheiev?mp_source=website)
 
 ## Footer Contact
