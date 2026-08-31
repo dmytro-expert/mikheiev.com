@@ -474,6 +474,8 @@
         var pageCount = 1;
         var visibleCount = 1;
         var frameRequested = false;
+        var programmaticScroll = false;
+        var programmaticScrollTimer = 0;
 
         function clamp(value, min, max) {
           return Math.min(max, Math.max(min, value));
@@ -550,7 +552,21 @@
           syncControls();
         }
 
+        function finishProgrammaticScroll() {
+          programmaticScroll = false;
+          syncFromScroll();
+        }
+
+        function scheduleProgrammaticScrollFinish(delay) {
+          window.clearTimeout(programmaticScrollTimer);
+          programmaticScrollTimer = window.setTimeout(finishProgrammaticScroll, delay);
+        }
+
         function requestScrollSync() {
+          if (programmaticScroll) {
+            scheduleProgrammaticScrollFinish(140);
+            return;
+          }
           if (frameRequested) return;
           frameRequested = true;
           window.requestAnimationFrame(syncFromScroll);
@@ -563,6 +579,7 @@
           syncControls();
 
           var left = getPageOffset(page);
+          programmaticScroll = true;
           if (typeof viewport.scrollTo === "function") {
             try {
               viewport.scrollTo({ left: left, behavior: "smooth" });
@@ -572,6 +589,7 @@
           } else {
             viewport.scrollLeft = left;
           }
+          scheduleProgrammaticScrollFinish(520);
         }
 
         previous.addEventListener("click", function () {
