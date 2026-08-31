@@ -10,7 +10,7 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://pub-175dc125eac043698a7b8f22abca3acb.r2.dev">
     <link rel="preload" as="image" href="https://pub-175dc125eac043698a7b8f22abca3acb.r2.dev/website/hero1_2.webp" type="image/webp" fetchpriority="high">
-    <link rel="stylesheet" href="styles.css?v=20260831-carousel2">
+    <link rel="stylesheet" href="styles.css?v=20260831-carousel3">
     <style>
       .portfolio-carousel {
         display: grid;
@@ -20,16 +20,29 @@
       .portfolio-viewport {
         margin: -2px;
         padding: 2px;
-        overflow: hidden;
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        scroll-padding-left: 2px;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .portfolio-viewport::-webkit-scrollbar {
+        display: none;
+      }
+
+      .portfolio-viewport:focus-visible {
+        outline: 3px solid var(--red);
+        outline-offset: 4px;
       }
 
       .portfolio-grid {
         display: flex;
         gap: 18px;
+        min-width: 100%;
         margin: 0;
-        padding: 0;
-        transition: transform 0.24s ease;
-        will-change: transform;
+        padding: 0 0 10px;
       }
 
       .portfolio-card {
@@ -461,30 +474,32 @@
         var pageCount = 1;
         var visibleCount = 1;
         var frameRequested = false;
-        var touchStartX = 0;
-        var touchStartY = 0;
 
         function clamp(value, min, max) {
           return Math.min(max, Math.max(min, value));
         }
 
+        function getVisibleCount() {
+          if (window.matchMedia("(max-width: 620px)").matches) {
+            return 1;
+          }
+          if (window.matchMedia("(max-width: 920px)").matches) {
+            return 2;
+          }
+          return 3;
+        }
+
         function measure() {
           if (!cards.length) return;
-          if (window.matchMedia("(max-width: 620px)").matches) {
-            visibleCount = 1;
-          } else if (window.matchMedia("(max-width: 920px)").matches) {
-            visibleCount = 2;
-          } else {
-            visibleCount = 3;
-          }
+          visibleCount = getVisibleCount();
           pageCount = Math.max(1, Math.ceil(cards.length / visibleCount));
           page = clamp(page, 0, pageCount - 1);
         }
 
-        function applyPosition() {
-          var index = Math.min(cards.length - 1, page * visibleCount);
-          var offset = cards[index] ? cards[index].offsetLeft : 0;
-          track.style.transform = "translate3d(" + (-offset) + "px, 0, 0)";
+        function getPageOffset(targetPage) {
+          var index = Math.min(cards.length - 1, targetPage * visibleCount);
+          if (!cards[index]) return 0;
+          return Math.max(0, cards[index].offsetLeft - track.offsetLeft);
         }
 
         function renderDots() {
@@ -499,31 +514,64 @@
           }
         }
 
-        function sync() {
-          frameRequested = false;
-          measure();
-          renderDots();
-
+        function syncControls() {
           previous.disabled = page === 0;
           next.disabled = page >= pageCount - 1;
 
           Array.prototype.forEach.call(dots.children, function (dot, index) {
             dot.setAttribute("aria-current", index === page ? "true" : "false");
           });
-
-          applyPosition();
         }
 
-        function requestSync() {
+        function syncLayout() {
+          measure();
+          renderDots();
+          syncControls();
+        }
+
+        function syncFromScroll() {
+          frameRequested = false;
+          measure();
+
+          var currentLeft = viewport.scrollLeft;
+          var nearestPage = 0;
+          var nearestDistance = Infinity;
+
+          for (var index = 0; index < pageCount; index += 1) {
+            var distance = Math.abs(currentLeft - getPageOffset(index));
+            if (distance < nearestDistance) {
+              nearestDistance = distance;
+              nearestPage = index;
+            }
+          }
+
+          page = nearestPage;
+          renderDots();
+          syncControls();
+        }
+
+        function requestScrollSync() {
           if (frameRequested) return;
           frameRequested = true;
-          window.requestAnimationFrame(sync);
+          window.requestAnimationFrame(syncFromScroll);
         }
 
         function goToPage(nextPage) {
           measure();
           page = clamp(nextPage, 0, pageCount - 1);
-          sync();
+          renderDots();
+          syncControls();
+
+          var left = getPageOffset(page);
+          if (typeof viewport.scrollTo === "function") {
+            try {
+              viewport.scrollTo({ left: left, behavior: "smooth" });
+            } catch (error) {
+              viewport.scrollLeft = left;
+            }
+          } else {
+            viewport.scrollLeft = left;
+          }
         }
 
         previous.addEventListener("click", function () {
@@ -551,27 +599,27 @@
           }
         });
 
-        viewport.addEventListener("touchstart", function (event) {
-          if (!event.touches.length) return;
-          touchStartX = event.touches[0].clientX;
-          touchStartY = event.touches[0].clientY;
-        }, { passive: true });
+        viewport.addEventListener("scroll", requestScrollSync, { passive: true });
 
-        viewport.addEventListener("touchend", function (event) {
-          if (!event.changedTouches.length) return;
-          var deltaX = event.changedTouches[0].clientX - touchStartX;
-          var deltaY = event.changedTouches[0].clientY - touchStartY;
-          if (Math.abs(deltaX) < 44 || Math.abs(deltaX) < Math.abs(deltaY)) return;
-          goToPage(page + (deltaX < 0 ? 1 : -1));
-        }, { passive: true });
-
-        window.addEventListener("resize", requestSync);
+        window.addEventListener("resize", function () {
+          var savedPage = page;
+          measure();
+          page = clamp(savedPage, 0, pageCount - 1);
+          renderDots();
+          syncControls();
+          viewport.scrollLeft = getPageOffset(page);
+        });
 
         if ("ResizeObserver" in window) {
-          new ResizeObserver(requestSync).observe(viewport);
+          new ResizeObserver(function () {
+            window.requestAnimationFrame(function () {
+              syncLayout();
+              viewport.scrollLeft = getPageOffset(page);
+            });
+          }).observe(viewport);
         }
 
-        sync();
+        syncLayout();
       })();
     </script>
   </body>

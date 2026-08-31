@@ -361,22 +361,32 @@ h3 {
   gap: 18px;
 }
 
-.portfolio-grid {
-  display: flex;
-  gap: 18px;
+.portfolio-viewport {
   margin: -2px;
-  padding: 2px 2px 12px;
+  padding: 2px;
   overflow-x: auto;
   overscroll-behavior-x: contain;
   scroll-padding-left: 2px;
   scroll-snap-type: x mandatory;
-  scrollbar-width: thin;
+  scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
 }
 
-.portfolio-grid:focus-visible {
+.portfolio-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.portfolio-viewport:focus-visible {
   outline: 3px solid var(--red);
   outline-offset: 4px;
+}
+
+.portfolio-grid {
+  display: flex;
+  gap: 18px;
+  min-width: 100%;
+  margin: 0;
+  padding: 0 0 10px;
 }
 
 .portfolio-card {
@@ -421,6 +431,7 @@ h3 {
   background: var(--white);
   color: var(--black);
   cursor: pointer;
+  font: inherit;
 }
 
 .portfolio-page-button:hover:not(:disabled) {
@@ -433,14 +444,12 @@ h3 {
   opacity: 0.42;
 }
 
-.portfolio-page-button svg {
-  width: 20px;
-  height: 20px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2.4;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+.portfolio-page-button span {
+  display: block;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1;
+  transform: translateY(-1px);
 }
 
 .portfolio-dots {
