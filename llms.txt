@@ -27,10 +27,15 @@ Dima helps companies choose the right AI direction, design architecture, build s
 
 ## Selected Work
 
-- AI System for a U.S. Wellness Brand: connected product data, brand rules, content generation, Monday.com, Notion, and Google Drive to create branded images, posters, and infographics.
-- AI Video Production Systems: connected image generation, video models, AI voices, avatars, automation, and human review into repeatable production workflows.
-- YouTube Shorts Automation: production workflow for creating and publishing short-form video content at scale using AI image, video, and voice models. The channel reached 1,000+ subscribers with $0 spent on ads.
-- AI Lead Generation Agent: automated lead research, qualification, personalized outreach, and CRM saving.
+- [Automated Video Production Pipeline With Characters](https://mikheiev.com/automated-video-production-pipeline-with-characters/): n8n-powered AI video generation system with consistent characters, automated editing, voice synthesis, and final assembly.
+- [Automated Content System for Beauty and Wellness Brands](https://mikheiev.com/automated-content-system-for-beauty-and-wellness-brands/): Notion, Hermes, and Make.com pipeline for branded product imagery and marketing assets.
+- [Automated AI Content Production for Pinterest](https://mikheiev.com/automated-ai-content-production-for-pinterest/): n8n and Notion workflow for branded infographics, human review, and Pinterest publishing.
+- [AI Buyer Persona Agents for Product Research](https://mikheiev.com/ai-buyer-persona-agents-for-product-research/): buyer persona agents for product feedback, positioning, messaging, and packaging ideas.
+- [AI Powered Video Pipeline](https://mikheiev.com/ai-powered-video-pipeline-faceless-content-production-system/): automated faceless video production and publishing system for YouTube and TikTok.
+- [AI Agent for lead generation](https://mikheiev.com/ai-agent-for-lead-generation/): autonomous lead research, qualification, outreach, and CRM workflow using n8n and OpenClaw.
+- [Auto-Reply System for GoHighLevel](https://mikheiev.com/auto-reply-system-for-gohighlevel-with-whatsapp/): WhatsApp and SMS auto-reply automation using n8n, Redis, Claude, and GoHighLevel.
+- [AI Content Marketing Automation](https://mikheiev.com/ai-content-marketing-automation/): multi-platform social publishing system with AI agents, avatar video production, automated scheduling, and organic lead generation workflows.
+- [Etsy Competitor Research Automation](https://mikheiev.com/etsy-competitor-research-automation-apify-playwright-claude-code/): Etsy competitor research pipeline using Apify, Playwright, Claude Code, and eRank.
 
 ## Calls to Action
 

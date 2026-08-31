@@ -1,13 +1,14 @@
 # mikheiev.com
 
-Static read-only landing page for Dima Mikheiev.
+Static read-only portfolio website for Dima Mikheiev.
 
 ## Files
 
-- `index.html` - semantic landing page with SEO metadata and JSON-LD.
+- `index.html` - semantic homepage with SEO metadata and JSON-LD.
 - `styles.css` - minimal responsive styling using portrait-derived palette.
+- Portfolio folders - dedicated static case-study pages.
 - `robots.txt` - crawler access and sitemap pointer.
-- `sitemap.xml` - single-page sitemap.
+- `sitemap.xml` - sitemap for homepage and portfolio pages.
 - `llms.txt` - agent-readable site summary.
 
 ## Notes
