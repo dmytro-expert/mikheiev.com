@@ -10,7 +10,103 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://pub-175dc125eac043698a7b8f22abca3acb.r2.dev">
     <link rel="preload" as="image" href="https://pub-175dc125eac043698a7b8f22abca3acb.r2.dev/website/hero1_2.webp" type="image/webp" fetchpriority="high">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=20260831-carousel2">
+    <style>
+      .portfolio-carousel {
+        display: grid;
+        gap: 18px;
+      }
+
+      .portfolio-viewport {
+        margin: -2px;
+        padding: 2px;
+        overflow: hidden;
+      }
+
+      .portfolio-grid {
+        display: flex;
+        gap: 18px;
+        margin: 0;
+        padding: 0;
+        transition: transform 0.24s ease;
+        will-change: transform;
+      }
+
+      .portfolio-card {
+        flex: 0 0 calc((100% - 36px) / 3);
+        min-width: 0;
+        scroll-snap-align: start;
+      }
+
+      .portfolio-controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+      }
+
+      .portfolio-page-button {
+        display: inline-grid;
+        place-items: center;
+        width: 42px;
+        height: 42px;
+        padding: 0;
+        border: 1px solid var(--line-strong);
+        border-radius: 50%;
+        background: var(--white);
+        color: var(--black);
+        cursor: pointer;
+        font: inherit;
+      }
+
+      .portfolio-page-button span {
+        display: block;
+        font-size: 22px;
+        font-weight: 800;
+        line-height: 1;
+        transform: translateY(-1px);
+      }
+
+      .portfolio-page-button:disabled {
+        cursor: default;
+        opacity: 0.42;
+      }
+
+      .portfolio-dots {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        min-width: 64px;
+      }
+
+      .portfolio-dots button {
+        width: 9px;
+        height: 9px;
+        padding: 0;
+        border: 1px solid var(--line-strong);
+        border-radius: 50%;
+        background: transparent;
+        cursor: pointer;
+      }
+
+      .portfolio-dots button[aria-current="true"] {
+        border-color: var(--red);
+        background: var(--red);
+      }
+
+      @media (max-width: 920px) {
+        .portfolio-card {
+          flex-basis: calc((100% - 18px) / 2);
+        }
+      }
+
+      @media (max-width: 620px) {
+        .portfolio-card {
+          flex-basis: 100%;
+        }
+      }
+    </style>
     <link rel="alternate" type="text/plain" href="llms.txt" title="LLM readable site summary">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://mikheiev.com/">
@@ -227,46 +323,44 @@
             <h2 id="work-title">Real systems I built and what came from them.</h2>
           </div>
           <div class="portfolio-carousel" data-portfolio-carousel>
-            <div class="portfolio-grid" data-portfolio-track tabindex="0" aria-label="Selected portfolio items">
-              <a class="portfolio-card" href="/automated-video-production-pipeline-with-characters/" aria-label="Open Automated Video Production Pipeline With Characters portfolio page">
-                <img src="https://pub-175dc125eac043698a7b8f22abca3acb.r2.dev/portfolio/Automated%20Video%20Production/image_original.webp" width="1200" height="900" alt="Automated Video Production Pipeline With Characters (n8n / AI agent)" loading="lazy" decoding="async">
-              </a>
-              <a class="portfolio-card" href="/automated-content-system-for-beauty-and-wellness-brands/" aria-label="Open Automated Content System for Beauty and Wellness Brands portfolio page">
-                <img src="https://pub-175dc125eac043698a7b8f22abca3acb.r2.dev/portfolio/Automated%20Content%20System/image_original.webp" width="1200" height="900" alt="Automated Content System for Beauty and Wellness Brands | Notion + Hermes + Make.com" loading="lazy" decoding="async">
-              </a>
-              <a class="portfolio-card" href="/automated-ai-content-production-for-pinterest/" aria-label="Open Automated AI Content Production for Pinterest portfolio page">
-                <img src="https://pub-175dc125eac043698a7b8f22abca3acb.r2.dev/portfolio/Automated%20AI%20Content/image_original.webp" width="1200" height="900" alt="Automated AI Content Production for Pinterest | n8n AI Workflow" loading="lazy" decoding="async">
-              </a>
-              <a class="portfolio-card" href="/ai-buyer-persona-agents-for-product-research/" aria-label="Open AI Buyer Persona Agents for Product Research portfolio page">
-                <img src="https://pub-175dc125eac043698a7b8f22abca3acb.r2.dev/portfolio/AI%20Buyer%20Persona/image_original.webp" width="1200" height="900" alt="AI Buyer Persona Agents for Product Research" loading="lazy" decoding="async">
-              </a>
-              <a class="portfolio-card" href="/ai-powered-video-pipeline-faceless-content-production-system/" aria-label="Open AI Powered Video Pipeline portfolio page">
-                <img src="https://pub-175dc125eac043698a7b8f22abca3acb.r2.dev/portfolio/AI%20Powered%20Video/2.webp" width="1200" height="900" alt="AI Powered Video Pipeline: Faceless Content Production System (n8n)" loading="lazy" decoding="async">
-              </a>
-              <a class="portfolio-card" href="/ai-agent-for-lead-generation/" aria-label="Open AI Agent for lead generation portfolio page">
-                <img src="https://pub-175dc125eac043698a7b8f22abca3acb.r2.dev/portfolio/AI%20Agent%20for%20lead%20generation/3.webp" width="1200" height="900" alt="AI Agent for lead generation (OpenClaw + n8n)" loading="lazy" decoding="async">
-              </a>
-              <a class="portfolio-card" href="/auto-reply-system-for-gohighlevel-with-whatsapp/" aria-label="Open Auto-Reply System for GoHighLevel portfolio page">
-                <img src="https://pub-175dc125eac043698a7b8f22abca3acb.r2.dev/portfolio/Auto-Reply%20System%20for%20GoHighLevel/5.webp" width="1200" height="900" alt="Auto-Reply System for GoHighLevel with WhatsApp &amp; SMS (n8n + GHL)" loading="lazy" decoding="async">
-              </a>
-              <a class="portfolio-card" href="/ai-content-marketing-automation/" aria-label="Open AI Content Marketing Automation portfolio page">
-                <img src="https://pub-175dc125eac043698a7b8f22abca3acb.r2.dev/portfolio/AI%20Content%20Marketing/1.webp" width="1200" height="900" alt="AI Content Marketing Automation. Multi-Platform Publishing System" loading="lazy" decoding="async">
-              </a>
-              <a class="portfolio-card" href="/etsy-competitor-research-automation-apify-playwright-claude-code/" aria-label="Open Etsy Competitor Research Automation portfolio page">
-                <img src="https://pub-175dc125eac043698a7b8f22abca3acb.r2.dev/portfolio/Etsy%20Competitor%20Research/4.webp" width="1200" height="900" alt="Etsy Competitor Research Automation: Apify, Playwright, Claude Code" loading="lazy" decoding="async">
-              </a>
+            <div class="portfolio-viewport" data-portfolio-viewport tabindex="0" aria-label="Selected portfolio items">
+              <div class="portfolio-grid" data-portfolio-track>
+                <a class="portfolio-card" href="/automated-video-production-pipeline-with-characters/" aria-label="Open Automated Video Production Pipeline With Characters portfolio page">
+                  <img src="https://pub-175dc125eac043698a7b8f22abca3acb.r2.dev/portfolio/Automated%20Video%20Production/image_original.webp" width="1200" height="900" alt="Automated Video Production Pipeline With Characters (n8n / AI agent)" loading="lazy" decoding="async">
+                </a>
+                <a class="portfolio-card" href="/automated-content-system-for-beauty-and-wellness-brands/" aria-label="Open Automated Content System for Beauty and Wellness Brands portfolio page">
+                  <img src="https://pub-175dc125eac043698a7b8f22abca3acb.r2.dev/portfolio/Automated%20Content%20System/image_original.webp" width="1200" height="900" alt="Automated Content System for Beauty and Wellness Brands | Notion + Hermes + Make.com" loading="lazy" decoding="async">
+                </a>
+                <a class="portfolio-card" href="/automated-ai-content-production-for-pinterest/" aria-label="Open Automated AI Content Production for Pinterest portfolio page">
+                  <img src="https://pub-175dc125eac043698a7b8f22abca3acb.r2.dev/portfolio/Automated%20AI%20Content/image_original.webp" width="1200" height="900" alt="Automated AI Content Production for Pinterest | n8n AI Workflow" loading="lazy" decoding="async">
+                </a>
+                <a class="portfolio-card" href="/ai-buyer-persona-agents-for-product-research/" aria-label="Open AI Buyer Persona Agents for Product Research portfolio page">
+                  <img src="https://pub-175dc125eac043698a7b8f22abca3acb.r2.dev/portfolio/AI%20Buyer%20Persona/image_original.webp" width="1200" height="900" alt="AI Buyer Persona Agents for Product Research" loading="lazy" decoding="async">
+                </a>
+                <a class="portfolio-card" href="/ai-powered-video-pipeline-faceless-content-production-system/" aria-label="Open AI Powered Video Pipeline portfolio page">
+                  <img src="https://pub-175dc125eac043698a7b8f22abca3acb.r2.dev/portfolio/AI%20Powered%20Video/2.webp" width="1200" height="900" alt="AI Powered Video Pipeline: Faceless Content Production System (n8n)" loading="lazy" decoding="async">
+                </a>
+                <a class="portfolio-card" href="/ai-agent-for-lead-generation/" aria-label="Open AI Agent for lead generation portfolio page">
+                  <img src="https://pub-175dc125eac043698a7b8f22abca3acb.r2.dev/portfolio/AI%20Agent%20for%20lead%20generation/3.webp" width="1200" height="900" alt="AI Agent for lead generation (OpenClaw + n8n)" loading="lazy" decoding="async">
+                </a>
+                <a class="portfolio-card" href="/auto-reply-system-for-gohighlevel-with-whatsapp/" aria-label="Open Auto-Reply System for GoHighLevel portfolio page">
+                  <img src="https://pub-175dc125eac043698a7b8f22abca3acb.r2.dev/portfolio/Auto-Reply%20System%20for%20GoHighLevel/5.webp" width="1200" height="900" alt="Auto-Reply System for GoHighLevel with WhatsApp &amp; SMS (n8n + GHL)" loading="lazy" decoding="async">
+                </a>
+                <a class="portfolio-card" href="/ai-content-marketing-automation/" aria-label="Open AI Content Marketing Automation portfolio page">
+                  <img src="https://pub-175dc125eac043698a7b8f22abca3acb.r2.dev/portfolio/AI%20Content%20Marketing/1.webp" width="1200" height="900" alt="AI Content Marketing Automation. Multi-Platform Publishing System" loading="lazy" decoding="async">
+                </a>
+                <a class="portfolio-card" href="/etsy-competitor-research-automation-apify-playwright-claude-code/" aria-label="Open Etsy Competitor Research Automation portfolio page">
+                  <img src="https://pub-175dc125eac043698a7b8f22abca3acb.r2.dev/portfolio/Etsy%20Competitor%20Research/4.webp" width="1200" height="900" alt="Etsy Competitor Research Automation: Apify, Playwright, Claude Code" loading="lazy" decoding="async">
+                </a>
+              </div>
             </div>
             <div class="portfolio-controls" aria-label="Portfolio navigation">
               <button class="portfolio-page-button" type="button" aria-label="Previous portfolio items" data-portfolio-prev>
-                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                  <path d="m15 18-6-6 6-6"></path>
-                </svg>
+                <span aria-hidden="true">&lt;</span>
               </button>
               <div class="portfolio-dots" data-portfolio-dots aria-label="Portfolio pages"></div>
               <button class="portfolio-page-button" type="button" aria-label="Next portfolio items" data-portfolio-next>
-                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                  <path d="m9 18 6-6-6-6"></path>
-                </svg>
+                <span aria-hidden="true">&gt;</span>
               </button>
             </div>
           </div>
@@ -357,44 +451,40 @@
         var carousel = document.querySelector("[data-portfolio-carousel]");
         if (!carousel) return;
 
+        var viewport = carousel.querySelector("[data-portfolio-viewport]");
         var track = carousel.querySelector("[data-portfolio-track]");
         var previous = carousel.querySelector("[data-portfolio-prev]");
         var next = carousel.querySelector("[data-portfolio-next]");
         var dots = carousel.querySelector("[data-portfolio-dots]");
         var cards = Array.prototype.slice.call(track.querySelectorAll(".portfolio-card"));
+        var page = 0;
         var pageCount = 1;
         var visibleCount = 1;
         var frameRequested = false;
+        var touchStartX = 0;
+        var touchStartY = 0;
 
-        function getGap() {
-          var styles = window.getComputedStyle(track);
-          return parseFloat(styles.columnGap || styles.gap) || 0;
+        function clamp(value, min, max) {
+          return Math.min(max, Math.max(min, value));
         }
 
         function measure() {
           if (!cards.length) return;
-          var gap = getGap();
-          var cardWidth = cards[0].getBoundingClientRect().width;
-          visibleCount = Math.max(1, Math.floor((track.clientWidth + gap) / (cardWidth + gap)));
+          if (window.matchMedia("(max-width: 620px)").matches) {
+            visibleCount = 1;
+          } else if (window.matchMedia("(max-width: 920px)").matches) {
+            visibleCount = 2;
+          } else {
+            visibleCount = 3;
+          }
           pageCount = Math.max(1, Math.ceil(cards.length / visibleCount));
+          page = clamp(page, 0, pageCount - 1);
         }
 
-        function currentPage() {
-          var nearest = 0;
-          var distance = Infinity;
-          cards.forEach(function (card, index) {
-            var cardDistance = Math.abs(card.offsetLeft - track.scrollLeft);
-            if (cardDistance < distance) {
-              distance = cardDistance;
-              nearest = index;
-            }
-          });
-          return Math.min(pageCount - 1, Math.floor(nearest / visibleCount));
-        }
-
-        function scrollToPage(page) {
-          var index = Math.min(cards.length - 1, Math.max(0, page * visibleCount));
-          cards[index].scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" });
+        function applyPosition() {
+          var index = Math.min(cards.length - 1, page * visibleCount);
+          var offset = cards[index] ? cards[index].offsetLeft : 0;
+          track.style.transform = "translate3d(" + (-offset) + "px, 0, 0)";
         }
 
         function renderDots() {
@@ -414,13 +504,14 @@
           measure();
           renderDots();
 
-          var page = currentPage();
           previous.disabled = page === 0;
           next.disabled = page >= pageCount - 1;
 
           Array.prototype.forEach.call(dots.children, function (dot, index) {
             dot.setAttribute("aria-current", index === page ? "true" : "false");
           });
+
+          applyPosition();
         }
 
         function requestSync() {
@@ -429,35 +520,55 @@
           window.requestAnimationFrame(sync);
         }
 
+        function goToPage(nextPage) {
+          measure();
+          page = clamp(nextPage, 0, pageCount - 1);
+          sync();
+        }
+
         previous.addEventListener("click", function () {
-          scrollToPage(currentPage() - 1);
+          goToPage(page - 1);
         });
 
         next.addEventListener("click", function () {
-          scrollToPage(currentPage() + 1);
+          goToPage(page + 1);
         });
 
         dots.addEventListener("click", function (event) {
           var dot = event.target.closest("button[data-page]");
           if (!dot) return;
-          scrollToPage(Number(dot.dataset.page));
+          goToPage(Number(dot.dataset.page));
         });
 
-        track.addEventListener("scroll", requestSync, { passive: true });
-        track.addEventListener("keydown", function (event) {
+        viewport.addEventListener("keydown", function (event) {
           if (event.key === "ArrowLeft") {
             event.preventDefault();
-            scrollToPage(currentPage() - 1);
+            goToPage(page - 1);
           }
           if (event.key === "ArrowRight") {
             event.preventDefault();
-            scrollToPage(currentPage() + 1);
+            goToPage(page + 1);
           }
         });
+
+        viewport.addEventListener("touchstart", function (event) {
+          if (!event.touches.length) return;
+          touchStartX = event.touches[0].clientX;
+          touchStartY = event.touches[0].clientY;
+        }, { passive: true });
+
+        viewport.addEventListener("touchend", function (event) {
+          if (!event.changedTouches.length) return;
+          var deltaX = event.changedTouches[0].clientX - touchStartX;
+          var deltaY = event.changedTouches[0].clientY - touchStartY;
+          if (Math.abs(deltaX) < 44 || Math.abs(deltaX) < Math.abs(deltaY)) return;
+          goToPage(page + (deltaX < 0 ? 1 : -1));
+        }, { passive: true });
+
         window.addEventListener("resize", requestSync);
 
         if ("ResizeObserver" in window) {
-          new ResizeObserver(requestSync).observe(track);
+          new ResizeObserver(requestSync).observe(viewport);
         }
 
         sync();
