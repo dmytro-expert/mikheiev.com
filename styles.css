@@ -317,8 +317,7 @@ h3 {
 }
 
 .service-card,
-.work-item,
-.faq__list article {
+.work-item {
   border: 1px solid var(--line-strong);
   border-radius: 8px;
   background: var(--white);
@@ -692,25 +691,6 @@ h3 {
   background: var(--red);
 }
 
-.faq {
-  max-width: 900px;
-}
-
-.faq__list {
-  display: grid;
-  gap: 12px;
-}
-
-.faq__list article {
-  display: grid;
-  gap: 10px;
-  padding: 24px;
-}
-
-.faq__list h3 {
-  font-size: 21px;
-}
-
 .final-cta {
   background: var(--black);
   color: var(--white);
@@ -930,8 +910,7 @@ h3 {
   }
 
   .service-card,
-  .work-item,
-  .faq__list article {
+  .work-item {
     padding: 22px;
   }
 }

@@ -4,7 +4,7 @@
 
 ## Site
 
-- [Home](https://mikheiev.com/): overview of Dima Mikheiev, services, selected work, proof points, FAQ, and contact links.
+- [Home](https://mikheiev.com/): overview of Dima Mikheiev, services, selected work, proof points, portfolio, and contact links.
 
 ## Primary Positioning
 
