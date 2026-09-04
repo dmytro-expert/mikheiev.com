@@ -6,6 +6,10 @@
 
 - [Home](https://mikheiev.com/): overview of Dima Mikheiev, services, selected work, proof points, portfolio, and contact links.
 
+## Blog
+
+- [I Built an AI Content System for a Beauty Brand](https://mikheiev.com/blog/): article about building an AI content system for a beauty and wellness brand, with lessons on team adoption, workflow design, brand context, and where human review still matters.
+
 ## Primary Positioning
 
 Dima helps companies choose the right AI direction, design architecture, build systems, and make sure those systems are useful to the team.

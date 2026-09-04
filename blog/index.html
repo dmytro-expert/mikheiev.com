@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="index, follow">
+    <meta name="description" content="For me, planning the architecture is usually not the hardest part of an AI automation project. The harder part is team adoption.">
+    <meta name="theme-color" content="#030100">
+    <link rel="canonical" href="https://mikheiev.com/blog/">
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../styles.css?v=20260904-blog">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mikheiev.com/blog/">
+    <meta property="og:title" content="I Built an AI Content System for a Beauty Brand. It Worked perfectly. Then I Learned Why 'Working' Isn't Enough">
+    <meta property="og:description" content="For me, planning the architecture is usually not the hardest part of an AI automation project. The harder part is team adoption.">
+    <meta property="og:image" content="https://mikheiev.com/blog/assets/content-system-brand-products.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>I Built an AI Content System for a Beauty Brand. It Worked perfectly. Then I Learned Why 'Working' Isn't Enough | Dima Mikheiev</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="top-line" aria-label="Professional proof">
+      <div class="container top-line__inner">
+        <p>15+ years in tech &middot; $600K+ earned on Upwork &middot; 200+ projects &middot; Top Rated Plus</p>
+        <p>Available as an AI Solutions Architect, for long-term work, and selected AI projects</p>
+      </div>
+    </div>
+    <header class="site-header">
+      <div class="container site-header__inner">
+        <a class="brand" href="/" aria-label="Dima Mikheiev home">
+          <span class="brand__mark" aria-hidden="true">DM</span>
+          <span class="brand__text">Dima Mikheiev</span>
+        </a>
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a href="/#work">Work</a>
+          <a href="/#about">About</a>
+          <a href="/#portfolio">Portfolio</a>
+          <a class="nav-cta" href="https://calendly.com/dima-mikheiev" target="_blank" rel="noopener noreferrer">Book a Call</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main">
+      <section class="article-hero" aria-labelledby="article-title">
+        <div class="container article-hero__inner">
+          <a class="back-link" href="/"><span class="back-link__icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" focusable="false"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg></span><span>Back to home</span></a>
+          <p class="eyebrow">Blog</p>
+          <h1 id="article-title">I Built an AI Content System for a Beauty Brand. It Worked perfectly. Then I Learned Why &lsquo;Working&rsquo; Isn&rsquo;t Enough</h1>
+        </div>
+      </section>
+      <section class="section article-section">
+        <article class="container article-content">
+          <p class="article-lead">For me, planning the architecture is usually not the hardest part of an AI automation project.</p>
+          <p>I can normally understand how the process works, where the bottlenecks are and how the system should be built.</p>
+          <blockquote>
+            <p><strong>The harder part is team adoption.</strong></p>
+          </blockquote>
+          <p>You can design a strong AI content system, connect the right tools and automate the content workflow. But if the marketing team does not use it naturally in their daily work, the technical part alone is not enough.</p>
+          <p>This project started with an established US beauty and wellness brand.</p>
+          <p>The marketing team had a large product catalog and needed many types of content around it: product images, posters, infographics, videos and assets for social media, retail and online campaigns.</p>
+          <p>They already had the products, brand guidelines and people creating content. The problem was the amount of repetitive work needed to keep producing more.</p>
+          <p>The goal was to build an <strong>AI content system that could scale content production without scaling headcount</strong>.</p>
+          <figure>
+            <img src="assets/content-system-brand-products.png" width="1086" height="655" alt="Different products, one consistent brand system for AI-generated content" loading="lazy" decoding="async">
+            <figcaption><strong>Different products, one consistent brand system for AI-generated content</strong></figcaption>
+          </figure>
+          <h2>Before building</h2>
+          <p>I first tried to understand how the team was already working. Where does the product information come from? Where are the brand rules stored? Who asks for content? Where should the final image or video go?</p>
+          <p>Then I look at the smaller things. Why is someone copying this information again? Does this step need a person? Can we automate it or remove it completely?</p>
+          <p>Sometimes the problem is simple: two tools are disconnected, the same data is entered twice or an old process is still there because nobody changed it.</p>
+          <blockquote>
+            <p>Only after that do I start choosing the tools.</p>
+          </blockquote>
+          <h2>From product catalog to content</h2>
+          <p>For a brand with many products, content becomes a scale problem quickly. One product may need a social image, an infographic, a short video and another format for the next campaign.</p>
+          <p>Doing all of this manually means repeating the same work again and again.</p>
+          <p>My idea was to use the website and product catalog as the base, keep the brand context in one place and let the same <strong>AI workflow create product images, infographics and video</strong> when the team needs them.</p>
+          <blockquote>
+            <p>One product. One source of brand context. Many content formats.</p>
+          </blockquote>
+          <p>A request could be as simple as: &ldquo;Create a poster for this product.&rdquo;</p>
+          <p>The system finds the product information, applies the right brand rules, generates the asset, saves it and sends the result back.</p>
+          <figure>
+            <img src="assets/product-to-assets.png" width="1674" height="895" alt="One product, multiple branded content assets generated from the same product and brand context" loading="lazy" decoding="async">
+            <figcaption>One product, multiple branded content assets generated from the same product and brand context</figcaption>
+          </figure>
+          <p>Over time, we connected Notion, Monday.com, Google Drive, n8n, image and video models and publishing tools into the same system. <strong>Most of this complexity stays behind the scenes.</strong></p>
+          <h2>How I structured the system</h2>
+          <p>I usually see four main parts in systems like this.</p>
+          <p><strong>The team&rsquo;s workspace:</strong> Slack, Monday.com or another tool people already use.</p>
+          <p><strong>The AI assistant:</strong> Understands the request and decides what happens next.</p>
+          <p><strong>The knowledge:</strong> Product data, brand guidelines, references and instructions. Most of this lived in Notion.</p>
+          <p><strong>The automation:</strong> n8n, APIs and AI models handle the actions.</p>
+          <figure>
+            <img src="assets/content-workflow.png" width="996" height="865" alt="AI content workflow connecting product data, automation, content generation and human review" loading="lazy" decoding="async">
+            <figcaption>AI content workflow connecting product data, automation, content generation and human review</figcaption>
+          </figure>
+          <p>This structure also helps with another important problem: <strong>keeping the brand voice when using AI</strong>.</p>
+          <p>AI without enough context quickly becomes generic. If it knows the products, approved references and brand rules, the result becomes much more consistent.</p>
+          <h2>Then I found another problem</h2>
+          <p>Technically, the system worked.</p>
+          <p>It could generate content, save it and move it between different tools.</p>
+          <p>But the team was not using it as much as I expected.</p>
+          <p>That changed how I think about AI implementation.</p>
+          <blockquote>
+            <p>Building an AI system is one problem. Building an <strong>AI content system that the team will actually use</strong> is another.</p>
+          </blockquote>
+          <figure>
+            <img src="assets/human-review-workflow.png" width="1920" height="1080" alt="AI content workflow with human review before publishing" loading="lazy" decoding="async">
+            <figcaption>AI content workflow with human review before publishing</figcaption>
+          </figure>
+          <p>If people need to learn another complicated process or remember another place to work, they can simply return to the old way.</p>
+          <p>Now, when I design automation, I also think about where the AI should appear, how many steps the person needs to make and where the result should come back.</p>
+          <p><strong>Sometimes a small workflow change is more valuable than adding another AI tool.</strong></p>
+          <h2>What should stay human?</h2>
+          <p>I also don&rsquo;t think 100% automation should be the goal.</p>
+          <p>AI video is a good example. I can automate most of the production, but I still want a person to review the result, remove weak parts and decide what is good enough to publish.</p>
+          <p>For me, the better question is not AI vs hiring a content manager. It is which repetitive work AI can remove so the team has more time for judgment, taste and context.</p>
+          <blockquote>
+            <p>Sometimes the answer is automation. Sometimes the best answer is to remove the step completely.</p>
+          </blockquote>
+          <h2>What I would change today?</h2>
+          <p>If I started a similar project now, I would begin with one useful workflow and watch how the team actually uses it. What saves time? Where do people get confused? What looked useful while we were building it but does not matter in daily work?</p>
+          <p>Then I would expand from there. We can build complex AI systems much faster today.</p>
+          <blockquote>
+            <p>The harder part is keeping that complexity behind the scenes and giving the team something simple.</p>
+          </blockquote>
+          <p>If you are a founder or marketing lead looking at <strong>how to automate content production for a beauty, skincare or wellness brand</strong>, this is where I would start:</p>
+          <p>Start with the repetitive work. Use the product and brand information you already have. Then build AI around the way your team actually works, so people have more time for the creative work that still needs them.</p>
+          <hr>
+          <p class="article-signoff">I&rsquo;m Dima &mdash; AI System Architect. I help teams remove repetitive work with AI and turn complex processes into one working system. You can see more of my work at <a href="http://mikheiev.com/">mikheiev.com</a></p>
+          <hr>
+        </article>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="container site-footer__inner">
+        <div class="footer-links" aria-label="Contact links">
+          <a href="mailto:dima@mikheiev.com" target="_blank" rel="noopener noreferrer" aria-label="Email Dima Mikheiev"><span aria-hidden="true">@</span>dima@mikheiev.com</a>
+          <a href="https://www.linkedin.com/in/mikheev-dmitry" target="_blank" rel="noopener noreferrer" aria-label="Connect with Dima Mikheiev on LinkedIn"><span aria-hidden="true">in</span>Connect on LinkedIn</a>
+          <a href="https://www.threads.com/@dimamikheiev" target="_blank" rel="noopener noreferrer" aria-label="Follow Dima Mikheiev on Threads"><span aria-hidden="true">th</span>Follow on Threads</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
