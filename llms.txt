@@ -8,6 +8,7 @@
 
 ## Blog
 
+- [AI Was Supposed to Make Work Easier](https://mikheiev.com/blog/ai-was-supposed-to-make-work-easier/): article about AI video production workflows, using Notion as a single interface, and keeping specialized tools behind the scenes.
 - [I Built an AI Content System for a Beauty Brand](https://mikheiev.com/blog/): article about building an AI content system for a beauty and wellness brand, with lessons on team adoption, workflow design, brand context, and where human review still matters.
 
 ## Primary Positioning
