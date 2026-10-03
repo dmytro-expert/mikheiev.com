@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="index, follow">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="description" content="A car price prediction system built on AWS shows why comparable records, data quality and transparent evidence matter as much as the prediction itself.">
+    <meta name="theme-color" content="#030100">
+    <link rel="canonical" href="https://mikheiev.com/blog/everyone-wants-an-ai-prediction-who-checks-the-data-behind-it/">
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../../styles.css?v=20260914-blog2">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mikheiev.com/blog/everyone-wants-an-ai-prediction-who-checks-the-data-behind-it/">
+    <meta property="og:title" content="Everyone Wants an AI Prediction. Who Checks the Data Behind It?">
+    <meta property="og:description" content="A car price prediction system built on AWS shows why comparable records, data quality and transparent evidence matter as much as the prediction itself.">
+    <meta property="og:image" content="https://pub-175dc125eac043698a7b8f22abca3acb.r2.dev/blog/article3/thumbnail.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>Everyone Wants an AI Prediction. Who Checks the Data Behind It? | Dima Mikheiev</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="top-line" aria-label="Professional proof">
+      <div class="container top-line__inner">
+        <p>Available as AI Solutions Architect / AI Engineer</p>
+      </div>
+    </div>
+    <header class="site-header">
+      <div class="container site-header__inner">
+        <a class="brand" href="/" aria-label="Dima Mikheiev home">
+          <span class="brand__mark" aria-hidden="true">DM</span>
+          <span class="brand__text">Dima Mikheiev</span>
+        </a>
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a href="/#work">Work</a>
+          <a href="/#about">About</a>
+          <a href="/#blog">Blog</a>
+          <a class="nav-cta" href="https://calendly.com/dima-mikheiev" target="_blank" rel="noopener noreferrer">Book a Call</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main">
+      <section class="article-hero" aria-labelledby="article-title">
+        <div class="container article-hero__inner">
+          <a class="back-link" href="/"><span class="back-link__icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" focusable="false"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg></span><span>Back to home</span></a>
+          <p class="eyebrow">Blog</p>
+          <h1 id="article-title">Everyone Wants an AI Prediction. Who Checks the Data Behind It?</h1>
+        </div>
+      </section>
+      <section class="section article-section">
+        <article class="container article-content">
+          <p class="article-lead">A price prediction looks simple from the outside. Give AI some past sales, describe a product and ask what it should cost.</p>
+          <p>But where did those numbers come from? Are we comparing similar things? And what happens when the data is wrong?</p>
+          <p>Recently, I was working on a project where I was given a dataset of cars and the prices they were sold for. The task was to build a price prediction system from those records.</p>
+          <p>A dealer could use something like this when pricing stock. A buyer or seller could use it as a starting point for a negotiation.</p>
+          <p>The idea sounded straightforward: describe a car, find similar examples and estimate a price.</p>
+          <figure>
+            <img src="https://pub-175dc125eac043698a7b8f22abca3acb.r2.dev/blog/article3/1.webp" alt="Car price prediction system" loading="lazy" decoding="async">
+          </figure>
+          <h2>What happens behind the scenes?</h2>
+          <p>I built the system on AWS, using S3 to store the data, Lambda to handle the workflow and SageMaker to train the model.</p>
+          <p>The process starts when we upload a data of a cars and prices they were sold for. That upload triggers a Lambda function that normalizes data. Next, another Lambda function starts a SageMaker training job to build a new nearest-neighbor model.</p>
+          <p>During training, the system selects settings such as feature weights, the number of comparable cars to use and how strongly closer matches should influence the price.</p>
+          <p>The main job of the model is to find similar cars and use them to predict the price.</p>
+          <h2>What counts as a similar car?</h2>
+          <p>I used a <strong>nearest-neighbor algorithm</strong>.</p>
+          <p>It finds cars from the same brand, compares the details the user supplied and uses the closest matches to calculate an estimate.</p>
+          <p><strong>The closer the match, the more influence it has on the predicted price.</strong></p>
+          <p>But not every detail matters equally. In this model, horsepower has more weight than color. Two cars should not become strong matches just because both happen to be blue.</p>
+          <p>So the task was more than averaging some prices. I needed to define what “similar” meant and how much each match should count.</p>
+          <p>And a good matching method still cannot fix a wrong price in the source data.</p>
+          <h2>Show where the number came from</h2>
+          <p>I wanted someone using the system to be able to inspect the result.</p>
+          <p>Under the estimate, the website explains which details were used and why those records were matched.</p>
+          <figure>
+            <img src="https://pub-175dc125eac043698a7b8f22abca3acb.r2.dev/blog/article3/2.webp" alt="Prediction explanation showing the details used to match comparable cars" loading="lazy" decoding="async">
+          </figure>
+          <p>The user can also open the comparable cars and see the recorded prices behind the prediction.</p>
+          <figure>
+            <img src="https://pub-175dc125eac043698a7b8f22abca3acb.r2.dev/blog/article3/3.webp" alt="Comparable cars and their recorded prices" loading="lazy" decoding="async">
+          </figure>
+          <p>This gives them something concrete to check. Do these comparisons make sense? Is an important detail missing?</p>
+          <p>When there are too few comparable records, the system says there is not enough data. Producing a number anyway would not make it more useful.</p>
+          <h2>Check where it gets things wrong</h2>
+          <p>I used a <strong>Jupyter Notebook</strong> to validate the model’s accuracy by comparing predicted prices with the actual recorded prices from test data.</p>
+          <p>This helped me understand how close the predictions were to the real values.</p>
+          <figure>
+            <img src="https://pub-175dc125eac043698a7b8f22abca3acb.r2.dev/blog/article3/4.webp" alt="Model validation comparing predicted and recorded car prices" loading="lazy" decoding="async">
+          </figure>
+          <h2>A prediction is not enough</h2>
+          <p>A number without context is hard to trust.</p>
+          <p>If AI gives a prediction, show the user why: what data it used, what it compared and what influenced the result.</p>
+          <p>This gives people something they can check instead of asking them to trust the model blindly.</p>
+          <p><strong>Don’t just show the answer. Show enough evidence to understand it.</strong></p>
+          <hr>
+          <p class="article-signoff"><strong>I’m Dima - AI Engineer &amp; Solutions Architect. I help teams turn complex processes into one working system. You can see more of my work at <a href="https://mikheiev.com/">mikheiev.com</a></strong></p>
+          <hr>
+        </article>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="container site-footer__inner">
+        <div class="footer-links" aria-label="Contact links">
+          <a href="mailto:dima@mikheiev.com" target="_blank" rel="noopener noreferrer" aria-label="Email Dima Mikheiev"><span aria-hidden="true">@</span>dima@mikheiev.com</a>
+          <a href="https://www.linkedin.com/in/mikheev-dmitry" target="_blank" rel="noopener noreferrer" aria-label="Connect with Dima Mikheiev on LinkedIn"><span aria-hidden="true">in</span>Connect on LinkedIn</a>
+          <a href="https://www.threads.com/@dimamikheiev" target="_blank" rel="noopener noreferrer" aria-label="Follow Dima Mikheiev on Threads"><span aria-hidden="true">th</span>Follow on Threads</a>
+          <a href="https://www.upwork.com/freelancers/~018aa3b570117296b0?mp_source=website" target="_blank" rel="noopener noreferrer" aria-label="View Dima Mikheiev on Upwork"><span aria-hidden="true">up</span>View on Upwork</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
