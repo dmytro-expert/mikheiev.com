@@ -250,6 +250,35 @@ h3 {
   color: var(--white);
 }
 
+.button--linkedin {
+  gap: 9px;
+  background: #0a66c2;
+  border-color: #0a66c2;
+  color: var(--white);
+}
+
+.button--linkedin:hover {
+  background: #004182;
+  border-color: #004182;
+  color: var(--white);
+}
+
+.linkedin-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+  border-radius: 2px;
+  background: var(--white);
+  color: #0a66c2;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+}
+
 .hero__portrait {
   justify-self: end;
 }
