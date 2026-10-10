@@ -319,6 +319,8 @@ h3 {
 
 .metrics dt.metrics__text {
   font-size: clamp(20px, 2.3vw, 26px);
+  line-height: 38px;
+  white-space: nowrap;
 }
 
 .metrics dd {
