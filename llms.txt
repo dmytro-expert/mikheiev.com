@@ -31,6 +31,7 @@ Dima helps companies choose the right AI direction, design architecture, build s
 ## Selected Work
 
 - [AI-Powered Used Car Price Prediction Platform on AWS](https://mikheiev.com/ai-powered-used-car-price-prediction-platform-on-aws/): Automated machine learning system for predicting second-hand car prices, built on AWS.
+- [AI-Powered Invoice Processing at Scale on Azure](https://mikheiev.com/ai-powered-invoice-processing-at-scale-on-azure/): Designed and built a scalable Azure-based system for processing large volumes of PDF invoices and converting them into structured XML.
 - [Automated Video Production Pipeline With Characters](https://mikheiev.com/automated-video-production-pipeline-with-characters/): n8n-powered AI video generation system with consistent characters, automated editing, voice synthesis, and final assembly.
 - [Automated Content System for Beauty and Wellness Brands](https://mikheiev.com/automated-content-system-for-beauty-and-wellness-brands/): Notion, Hermes, and Make.com pipeline for branded product imagery and marketing assets.
 - [Automated AI Content Production for Pinterest](https://mikheiev.com/automated-ai-content-production-for-pinterest/): n8n and Notion workflow for branded infographics, human review, and Pinterest publishing.
